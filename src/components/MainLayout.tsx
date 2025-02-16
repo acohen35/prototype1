@@ -3,6 +3,7 @@ import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { TabBar } from "./TabBar";
 import { Settings, ChevronDown, ChevronUp } from "lucide-react";
 import { SettingsDialog } from "./SettingsDialog";
+import { PhoneFrame } from "./PhoneFrame";
 
 interface MainLayoutProps {
     savedRoutes: string[];
@@ -28,24 +29,24 @@ export function MainLayout({ savedRoutes, setSavedRoutes }: MainLayoutProps) {
     const isHomePage = location.pathname === "/history";
     
     return (
-        <div className="flex justify-center min-h-screen bg-gray-100 dark:bg-gray-800">
-            <div className="flex flex-col h-screen w-full max-w-[390px] bg-white dark:bg-gray-900 shadow-lg">
-            <header className="flex items-center justify-between p-4 border-b dark:border-gray-700">
-                <TabBar />
-                <button
-                    onClick={() => setIsSettingsOpen(true)}
-                    className="text-gray-600 hover:text-gray-800"
-                >
-                    <Settings size={24} />
-                </button>
-            </header>
-            <SettingsDialog
-                isOpen={isSettingsOpen}
-                onClose={() => setIsSettingsOpen(false)}
-            />
-            <main className="flex-1 flex flex-col overflow-hidden">
-                {isHomePage ? (
-                    <table className="w-full">
+        <PhoneFrame>
+            <div className="relative flex flex-col h-full">
+                <header className="flex items-center justify-between p-4 border-b dark:border-gray-700">
+                    <TabBar />
+                    <button
+                        onClick={() => setIsSettingsOpen(true)}
+                        className="text-gray-600 hover:text-gray-800"
+                    >
+                        <Settings size={24} />
+                    </button>
+                </header>
+                <SettingsDialog
+                    isOpen={isSettingsOpen}
+                    onClose={() => setIsSettingsOpen(false)}
+                />
+                <main className="flex-1 flex flex-col overflow-hidden">
+                    {isHomePage ? (
+                        <table className="w-full">
                         <tbody>
                             <tr>
                                 <td>
@@ -129,6 +130,6 @@ export function MainLayout({ savedRoutes, setSavedRoutes }: MainLayoutProps) {
                 )}
             </main>
             </div>
-        </div>
+        </PhoneFrame>
     );
 }

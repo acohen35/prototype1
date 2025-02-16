@@ -12,8 +12,8 @@ export function SettingsDialog({ isOpen, onClose }: SettingsDialogProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50">
-      <div className="absolute bottom-0 left-0 right-0 bg-white dark:bg-gray-800 rounded-t-2xl p-4">
+    <div className="absolute inset-0 bg-black bg-opacity-50" style={{ zIndex: 1000 }}>
+      <div className="absolute bottom-0 left-0 right-0 bg-white dark:bg-gray-800 rounded-t-2xl p-4" style={{ maxHeight: 'calc(100% - 4rem)' }}>
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-xl font-semibold dark:text-white">Settings</h2>
           <button onClick={onClose} className="text-gray-500 dark:text-gray-400">
