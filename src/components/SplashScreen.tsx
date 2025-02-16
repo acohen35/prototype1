@@ -6,7 +6,7 @@ export function SplashScreen() {
   useEffect(() => {
     const timer = setTimeout(() => {
       navigate('/history');
-    }, 10000);
+    }, 3000);
     return () => clearTimeout(timer);
   }, [navigate]);
   return <div className="flex flex-col items-center justify-center min-h-screen bg-[#0B4EA2] text-white p-4">
