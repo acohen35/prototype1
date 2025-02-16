@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { ZoomableImage } from "./ZoomableImage";
 import { ScheduleDialog } from "./ScheduleDialog";
+
+const getImageUrl = (path: string) => `/prototype1${path}`;
 type RouteCategory = "bus" | "blue" | "gold";
 type Direction = "inbound" | "outbound";
 interface RouteStop {
@@ -20,7 +22,7 @@ const ROUTE_MAPS: RouteMap[] = [
     id: "bus-1",
     name: "1 - Mt. Holly Road",
     category: "bus",
-    imageUrl: "/pasted-image-1737566823748.gif",
+    imageUrl: getImageUrl("/pasted-image-1737566823748.gif"),
     stops: [{
       id: 1,
       name: "Charlotte Transportation Center"
@@ -42,7 +44,7 @@ const ROUTE_MAPS: RouteMap[] = [
     id: "bus-2",
     name: "2 - Ashley/Scaleybark Crosstown",
     category: "bus",
-    imageUrl: "/AshleyPark-Scaleybark.gif",
+    imageUrl: getImageUrl("/AshleyPark-Scaleybark.gif"),
     stops: [{
       id: 1,
       name: "SouthPark Mall"
@@ -58,42 +60,42 @@ const ROUTE_MAPS: RouteMap[] = [
     id: "bus-3",
     name: "3 - The Plaza",
     category: "bus",
-    imageUrl: "/ThePlaza3.gif",
+    imageUrl: getImageUrl("/ThePlaza3.gif"),
     stops: [{ id: 1, name: "Uptown Transit Center" }]
   },
   {
     id: "bus-4",
     name: "4 - Belmont",
     category: "bus",
-    imageUrl: "/ToUptownCharlotte4.gif",
+    imageUrl: getImageUrl("/ToUptownCharlotte4.gif"),
     stops: [{ id: 1, name: "Uptown Transit Center" }]
   },
   {
     id: "bus-5",
     name: "5 - Airport",
     category: "bus",
-    imageUrl: "/Airport5.gif",
+    imageUrl: getImageUrl("/Airport5.gif"),
     stops: [{ id: 1, name: "Charlotte Douglas Airport" }]
   },
   {
     id: "bus-6",
     name: "6 - Kings Drive",
     category: "bus",
-    imageUrl: "/KingsDrive6.gif",
+    imageUrl: getImageUrl("/KingsDrive6.gif"),
     stops: [{ id: 1, name: "Uptown Transit Center" }]
   },
   {
     id: "bus-7",
     name: "7 - Beatties Ford",
     category: "bus",
-    imageUrl: "/BeattiesFord7.gif",
+    imageUrl: getImageUrl("/BeattiesFord7.gif"),
     stops: [{ id: 1, name: "Uptown Transit Center" }]
   },
   {
     id: "bus-8",
     name: "8 - Tuckaseegee Road",
     category: "bus",
-    imageUrl: "/TuckaseegeeRd8.gif",
+    imageUrl: getImageUrl("/TuckaseegeeRd8.gif"),
     stops: [{ id: 1, name: "Uptown Transit Center" }]
   },
   {
@@ -528,7 +530,7 @@ export function MapView() {
       id: "501",
       name: "501 - Light Rail - Lynx Blue Line",
       category: "blue",
-      imageUrl: "/LightRailLynxBlueLine501.gif",
+      imageUrl: getImageUrl("/LightRailLynxBlueLine501.gif"),
       stops: [
         { id: 1, name: "UNC Charlotte Main Station" },
         { id: 2, name: "JW Clay Blvd Station" },
@@ -565,7 +567,7 @@ export function MapView() {
       id: "510",
       name: "510 - CityLYNX Gold Line",
       category: "gold",
-      imageUrl: "/CityLynxGoldLine510.gif",
+      imageUrl: getImageUrl("/CityLynxGoldLine510.gif"),
       stops: [
         { id: 1, name: "French St Station (CityLYNX)" },
         { id: 2, name: "Johnson & Wales" },
@@ -581,7 +583,7 @@ export function MapView() {
       <div className="p-4 pb-20">
         {/* CATS Logo */}
         <div className="flex justify-center mb-4">
-          <img src="/logos/CatslogoBW-1024x282.webp" alt="CATS Logo" className="h-16 object-contain" />
+          <img src={getImageUrl("/logos/CatslogoBW-1024x282.webp")} alt="CATS Logo" className="h-16 object-contain" />
         </div>
         {/* Route Categories */}
         <div className="space-y-2">
@@ -668,7 +670,7 @@ export function MapView() {
               {/* Map */}
               <div className="mt-4 bg-white rounded-lg overflow-hidden">
                 <ZoomableImage
-                  src="/LightRailLynxBlueLine501.gif"
+                  src={getImageUrl("/LightRailLynxBlueLine501.gif")}
                   alt="Blue Line Map"
                 />
               </div>
@@ -759,7 +761,7 @@ export function MapView() {
               {/* Map */}
               <div className="mt-4 bg-white rounded-lg overflow-hidden">
                 <ZoomableImage
-                  src="/CityLynxGoldLine510.gif"
+                  src={getImageUrl("/CityLynxGoldLine510.gif")}
                   alt="Gold Line Map"
                 />
               </div>
@@ -839,7 +841,7 @@ export function MapView() {
             </div>
             {selectedRoute && <>
                 <div className="mt-4 bg-white rounded-lg overflow-hidden border">
-                  <ZoomableImage src={selectedRoute.imageUrl} alt={`Map for ${selectedRoute.name}`} />
+                  <ZoomableImage src={getImageUrl(selectedRoute.imageUrl)} alt={`Map for ${selectedRoute.name}`} />
                 </div>
                 <div className="space-y-2">
                   {selectedRoute.stops.map(stop => <div key={stop.id} className="flex items-center justify-between p-3 border-b">
