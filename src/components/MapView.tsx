@@ -577,8 +577,8 @@ export function MapView() {
   }];
   const filteredRoutes = selectedCategory ? ROUTE_MAPS.filter(route => route.category === selectedCategory) : [];
   return (
-    <div className="flex flex-col min-h-screen bg-white">
-      <div className="p-4">
+    <div className="flex flex-col min-h-screen bg-white overflow-auto">
+      <div className="p-4 pb-20">
         {/* CATS Logo */}
         <div className="flex justify-center mb-4">
           <img src="/logos/CatslogoBW-1024x282.webp" alt="CATS Logo" className="h-16 object-contain" />
