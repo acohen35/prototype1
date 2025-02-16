@@ -28,7 +28,8 @@ export function MainLayout({ savedRoutes, setSavedRoutes }: MainLayoutProps) {
     const isHomePage = location.pathname === "/history";
     
     return (
-        <div className="flex flex-col h-screen bg-white dark:bg-gray-900">
+        <div className="flex justify-center min-h-screen bg-gray-100 dark:bg-gray-800">
+            <div className="flex flex-col h-screen w-full max-w-[390px] bg-white dark:bg-gray-900 shadow-lg">
             <header className="flex items-center justify-between p-4 border-b dark:border-gray-700">
                 <TabBar />
                 <button
@@ -127,6 +128,7 @@ export function MainLayout({ savedRoutes, setSavedRoutes }: MainLayoutProps) {
                     <Outlet />
                 )}
             </main>
+            </div>
         </div>
     );
 }
