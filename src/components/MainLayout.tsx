@@ -31,14 +31,8 @@ export function MainLayout({ savedRoutes, setSavedRoutes }: MainLayoutProps) {
     return (
         <PhoneFrame>
             <div className="relative flex flex-col h-full">
-                <header className="flex items-center justify-between p-4 border-b dark:border-gray-700">
-                    <TabBar />
-                    <button
-                        onClick={() => setIsSettingsOpen(true)}
-                        className="text-gray-600 hover:text-gray-800"
-                    >
-                        <Settings size={24} />
-                    </button>
+                <header className="px-6 py-4 border-b dark:border-gray-700">
+                    <TabBar onSettingsClick={() => setIsSettingsOpen(true)} />
                 </header>
                 <SettingsDialog
                     isOpen={isSettingsOpen}

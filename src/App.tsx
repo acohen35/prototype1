@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { MemoryRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import { SplashScreen } from "./components/SplashScreen";
 import { MainLayout } from "./components/MainLayout";
 import { HistoryView } from "./components/HistoryView";
