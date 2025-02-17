@@ -126,15 +126,15 @@ export function UpcomingStationSelector() {
   };
 
   return (
-    <div className="flex flex-col h-full">
-      <div className="flex-shrink-0 bg-[#0B4EA2] text-white p-4 flex items-center gap-4">
+    <div className="h-full bg-white flex flex-col">
+      <div className="flex-none bg-[#0B4EA2] text-white p-4 flex items-center gap-4">
         <button onClick={() => navigate("/upcoming", { state: location.state })}>
           <ArrowLeft size={24} />
         </button>
         <h1 className="text-xl">Select a station</h1>
       </div>
 
-      <div className="flex-shrink-0 border-b">
+      <div className="flex-none border-b">
         <div className="flex">
           <button className="flex-1 py-4 text-[#0B4EA2] border-b-2 border-[#0B4EA2]">
             All Stations
@@ -143,8 +143,8 @@ export function UpcomingStationSelector() {
         </div>
       </div>
 
-      <div className="flex-1 min-h-0">
-        <div className="h-full overflow-y-auto bg-gray-50">
+      <div className="flex-1 overflow-y-auto">
+        <div className="bg-gray-50 pb-24">
           {stations.map(station => (
             <button
               key={station.id}
@@ -160,12 +160,10 @@ export function UpcomingStationSelector() {
         </div>
       </div>
 
-      <div className="flex-shrink-0 px-4 pb-8 pt-4 bg-white border-t border-gray-200">
-        <div className="flex justify-end">
-          <button className="w-14 h-14 rounded-full bg-[#0B4EA2] text-white flex items-center justify-center shadow-lg">
-            <Search size={24} />
-          </button>
-        </div>
+      <div className="fixed bottom-4 right-4">
+        <button className="w-14 h-14 rounded-full bg-[#0B4EA2] text-white flex items-center justify-center shadow-lg hover:bg-[#0A4589]">
+          <Search size={24} />
+        </button>
       </div>
     </div>
   );

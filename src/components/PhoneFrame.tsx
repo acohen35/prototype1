@@ -28,10 +28,8 @@ export function PhoneFrame({ children }: { children: React.ReactNode }) {
           <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-32 h-1 bg-gray-600 rounded-full"></div>
         </div>
         {/* Screen Content */}
-        <div className="relative bg-white dark:bg-gray-900 rounded-[2.5rem] h-[800px] overflow-hidden">
-          <div className="relative h-full overflow-y-auto">
-            {children}
-          </div>
+        <div className="relative bg-white dark:bg-gray-900 rounded-[2.5rem] h-[800px] overflow-hidden [transform-style:preserve-3d]">
+          {children}
         </div>
       </div>
     </div>

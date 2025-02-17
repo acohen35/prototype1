@@ -1,0 +1,148 @@
+# Layout Pattern Analysis for Phone Frame Containment
+
+## Current Issue
+The UpcomingStationSelector component has a footer button breaking out of the phone frame bounds due to using fixed positioning without proper containment.
+
+## Component Layout Patterns
+
+### Working Patterns
+
+1. ScheduleView (Best Practice)
+```tsx
+<div className="flex flex-col h-full bg-white relative">
+  {/* Fixed header */}
+  <div className="bg-[#0B4EA2] text-white p-4">...</div>
+  
+  {/* Scrollable content */}
+  <div className="flex-1 overflow-y-auto">...</div>
+  
+  {/* Footer with proper containment */}
+  <div className="px-4 pb-8 pt-4 bg-white border-t">...</div>
+</div>
+```
+- Uses relative positioning on parent
+- Proper flex column layout
+- Scrollable area with flex-1
+- Footer stays within bounds using standard flow
+
+2. RouteSelector
+```tsx
+<div className="flex flex-col min-h-screen bg-white">
+  <div className="bg-[#0B4EA2] text-white p-4">...</div>
+  <div className="flex-1 bg-gray-50 overflow-y-auto pb-20">...</div>
+  <div className="fixed bottom-4 right-4">...</div>
+</div>
+```
+- Similar pattern but uses fixed positioning for floating action button
+- Adds padding-bottom to scrollable area to prevent content overlap
+
+### Problematic Patterns
+
+1. UpcomingStationSelector (Current Issue)
+```tsx
+<div className="flex flex-col h-full">
+  <div className="flex-shrink-0">...</div>
+  <div className="flex-1 min-h-0">...</div>
+  <div className="flex-shrink-0 px-4 pb-8 pt-4">...</div>
+</div>
+```
+- Lacks proper overflow containment
+- Footer positioning breaks phone frame bounds
+- Missing background colors for visual containment
+
+2. StationSelector
+```tsx
+<div className="flex flex-col min-h-screen bg-white">
+  ...
+  <div className="fixed bottom-4 right-4">...</div>
+</div>
+```
+- Similar issues with fixed positioning
+- Could benefit from the ScheduleView pattern
+
+## Key Findings
+
+1. Container Structure
+- Best: `flex flex-col h-full bg-white relative`
+- Ensures proper height containment
+- Enables relative positioning context
+- Provides visual background containment
+
+2. Scrollable Content
+- Best: `flex-1 overflow-y-auto`
+- Use padding-bottom when needed for floating elements
+- Avoid min-h-0 as it can break containment
+
+3. Footer Positioning
+- Best: Standard flow with `border-t` and padding
+- Alternative: Sticky positioning with proper containment
+- Avoid: Fixed positioning unless absolutely necessary
+
+4. Visual Containment
+- Always include background colors
+- Use border-t for visual separation
+- Consider shadow or border for floating elements
+
+## Latest Attempt (Failed)
+
+### Changes Made
+```tsx
+<div className="flex flex-col h-full bg-white relative">
+  {/* Header */}
+  <div className="bg-[#0B4EA2] text-white p-4">...</div>
+  
+  {/* Scrollable Content */}
+  <div className="flex-1 overflow-y-auto pb-20">...</div>
+  
+  {/* Footer */}
+  <div className="bg-white border-t border-gray-200 sticky bottom-0">
+    <div className="px-4 py-4 flex justify-end">
+      <button className="w-14 h-14 rounded-full bg-[#0B4EA2] text-white flex items-center justify-center shadow-lg hover:bg-[#0A4589]">
+        <Search size={24} />
+      </button>
+    </div>
+  </div>
+</div>
+```
+
+### Analysis of Failure
+1. Adding `relative` to root container did not establish proper containment
+2. `pb-20` padding in scrollable area was insufficient
+3. `sticky` positioning on footer still allowed button to break containment
+4. Visual improvements (hover state) were added but did not address core containment issue
+
+### Solution Found
+The issue was resolved by adding `[transform-style:preserve-3d]` to the PhoneFrame's screen content container. This works because:
+
+1. Fixed positioning in CSS positions elements relative to their containing block
+2. By default, fixed elements are positioned relative to the viewport
+3. However, certain CSS properties can create a new containing block for fixed elements:
+   - transform
+   - perspective
+   - filter
+   - contain: paint
+   - will-change: transform/perspective/filter
+   - transform-style: preserve-3d
+
+By adding `transform-style: preserve-3d` to the PhoneFrame's screen content, we created a new containing block that constrains the fixed search button within the phone frame bounds. This is why the search button in UpcomingRouteSelector was properly contained - it was being positioned relative to the phone frame rather than the viewport.
+
+## Implementation Notes
+
+1. Always use the PhoneFrame component's constraints:
+   - Width: w-[390px]
+   - Height: h-[800px]
+   - Rounded corners: rounded-[2.5rem]
+
+2. Overflow handling:
+   - Parent: overflow-hidden
+   - Content: overflow-y-auto
+
+3. Visual hierarchy:
+   - Use background colors for all sections
+   - Include proper spacing and borders
+   - Consider z-index for overlapping elements
+
+4. Mobile considerations:
+   - Account for notch and home indicator
+   - Consider safe areas
+   - Test touch interactions
