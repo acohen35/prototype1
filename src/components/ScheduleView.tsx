@@ -126,7 +126,7 @@ export function ScheduleView() {
   }, [selectedRoute, selectedDirection]);
 
   return (
-    <div className="fixed inset-0 flex flex-col bg-white">
+    <div className="flex flex-col h-full bg-white">
       {/* Fixed header */}
       <div className="bg-[#0B4EA2] text-white p-4 flex items-center gap-4">
         <button onClick={() => navigate("/route")}>
@@ -208,8 +208,8 @@ export function ScheduleView() {
 
       {/* Modals */}
       {showDirectionModal && (
-        <div className="fixed inset-0 z-50 bg-black bg-opacity-50">
-          <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-3xl overflow-hidden">
+        <div className="absolute inset-0 z-50 bg-black bg-opacity-50">
+          <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-3xl overflow-hidden max-h-[50vh]">
             <div className="p-4">
               <h2 className="text-xl mb-4">Select direction</h2>
               <div className="space-y-2">
@@ -232,8 +232,8 @@ export function ScheduleView() {
       )}
 
       {showWeekdayModal && (
-        <div className="fixed inset-0 z-50 bg-black bg-opacity-50">
-          <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-3xl overflow-hidden">
+        <div className="absolute inset-0 z-50 bg-black bg-opacity-50">
+          <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-3xl overflow-hidden max-h-[50vh]">
             <div className="p-4">
               <h2 className="text-xl mb-4">Select day</h2>
               <div className="space-y-2">
