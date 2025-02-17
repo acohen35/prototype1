@@ -126,7 +126,7 @@ export function ScheduleView() {
   }, [selectedRoute, selectedDirection]);
 
   return (
-    <div className="flex flex-col h-full bg-white">
+    <div className="flex flex-col h-full bg-white relative">
       {/* Fixed header */}
       <div className="bg-[#0B4EA2] text-white p-4 flex items-center gap-4">
         <button onClick={() => navigate("/route")}>
@@ -208,23 +208,25 @@ export function ScheduleView() {
 
       {/* Modals */}
       {showDirectionModal && (
-        <div className="absolute inset-0 z-50 bg-black bg-opacity-50">
-          <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-3xl overflow-hidden max-h-[50vh]">
-            <div className="p-4">
-              <h2 className="text-xl mb-4">Select direction</h2>
-              <div className="space-y-2">
-                <button
-                  onClick={() => handleDirectionSelect("INBOUND")}
-                  className="w-full p-4 text-left hover:bg-gray-50 rounded-lg"
-                >
-                  INBOUND
-                </button>
-                <button
-                  onClick={() => handleDirectionSelect("OUTBOUND")}
-                  className="w-full p-4 text-left hover:bg-gray-50 rounded-lg"
-                >
-                  OUTBOUND
-                </button>
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-end">
+          <div className="w-full bg-white rounded-t-3xl shadow-lg">
+            <div className="max-h-[60vh] overflow-y-auto">
+              <div className="p-4">
+                <h2 className="text-xl mb-4">Select direction</h2>
+                <div className="space-y-2">
+                  <button
+                    onClick={() => handleDirectionSelect("INBOUND")}
+                    className="w-full p-4 text-left hover:bg-gray-50 rounded-lg"
+                  >
+                    INBOUND
+                  </button>
+                  <button
+                    onClick={() => handleDirectionSelect("OUTBOUND")}
+                    className="w-full p-4 text-left hover:bg-gray-50 rounded-lg"
+                  >
+                    OUTBOUND
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -232,29 +234,31 @@ export function ScheduleView() {
       )}
 
       {showWeekdayModal && (
-        <div className="absolute inset-0 z-50 bg-black bg-opacity-50">
-          <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-3xl overflow-hidden max-h-[50vh]">
-            <div className="p-4">
-              <h2 className="text-xl mb-4">Select day</h2>
-              <div className="space-y-2">
-                <button
-                  onClick={() => handleWeekdaySelect("WEEKDAYS")}
-                  className="w-full p-4 text-left hover:bg-gray-50 rounded-lg"
-                >
-                  WEEKDAYS
-                </button>
-                <button
-                  onClick={() => handleWeekdaySelect("SATURDAY")}
-                  className="w-full p-4 text-left hover:bg-gray-50 rounded-lg"
-                >
-                  SATURDAY
-                </button>
-                <button
-                  onClick={() => handleWeekdaySelect("SUNDAY")}
-                  className="w-full p-4 text-left hover:bg-gray-50 rounded-lg"
-                >
-                  SUNDAY
-                </button>
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-end">
+          <div className="w-full bg-white rounded-t-3xl shadow-lg">
+            <div className="max-h-[60vh] overflow-y-auto">
+              <div className="p-4">
+                <h2 className="text-xl mb-4">Select day</h2>
+                <div className="space-y-2">
+                  <button
+                    onClick={() => handleWeekdaySelect("WEEKDAYS")}
+                    className="w-full p-4 text-left hover:bg-gray-50 rounded-lg"
+                  >
+                    WEEKDAYS
+                  </button>
+                  <button
+                    onClick={() => handleWeekdaySelect("SATURDAY")}
+                    className="w-full p-4 text-left hover:bg-gray-50 rounded-lg"
+                  >
+                    SATURDAY
+                  </button>
+                  <button
+                    onClick={() => handleWeekdaySelect("SUNDAY")}
+                    className="w-full p-4 text-left hover:bg-gray-50 rounded-lg"
+                  >
+                    SUNDAY
+                  </button>
+                </div>
               </div>
             </div>
           </div>
