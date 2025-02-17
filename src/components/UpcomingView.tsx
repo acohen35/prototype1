@@ -64,12 +64,7 @@ export function UpcomingView({
     return (
       <div className="flex-1 flex flex-col items-center justify-center p-4">
         <div className="text-gray-400 mb-6">
-          <div className="w-24 h-24 mx-auto">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M4 16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2v10zm2 0V6h12v10H6z"/>
-              <path d="M12 8.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z"/>
-            </svg>
-          </div>
+          <img src="/prototype1/logos/CatslogoBW-1024x282.webp" alt="CATS Logo" className="w-48 h-auto mx-auto" />
         </div>
         <h2 className="text-gray-600 text-xl mb-4">Select a route to get started</h2>
         <button
@@ -89,11 +84,7 @@ export function UpcomingView({
         <div className="flex-1 overflow-y-auto">
           <div className="flex flex-col items-center justify-center p-4">
             <div className="text-gray-400 mb-6">
-              <div className="w-24 h-24 mx-auto">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M16 6v8h3v8h2V2c-2.76 0-5 2.24-5 4zm-5 3H9V2H7v7H5V2H3v7c0 2.21 1.79 4 4 4v9h2v-9c2.21 0 4-1.79 4-4V2h-2v7z"/>
-                </svg>
-              </div>
+              <img src="/prototype1/logos/CatslogoBW-1024x282.webp" alt="CATS Logo" className="w-48 h-auto mx-auto" />
             </div>
             <h2 className="text-gray-600 text-xl mb-4">Select stations</h2>
           </div>

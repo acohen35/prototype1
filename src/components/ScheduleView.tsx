@@ -97,12 +97,7 @@ export function ScheduleView() {
     return (
       <div className="flex-1 flex flex-col items-center justify-center p-4">
         <div className="text-gray-400 mb-6">
-          <div className="w-24 h-24 mx-auto">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M4 16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2v10zm2 0V6h12v10H6z"/>
-              <path d="M12 8.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z"/>
-            </svg>
-          </div>
+          <img src="/prototype1/logos/CatslogoBW-1024x282.webp" alt="CATS Logo" className="w-48 h-auto mx-auto" />
         </div>
         <h2 className="text-gray-600 text-xl mb-4">Select a route to get started</h2>
         <button
@@ -208,7 +203,7 @@ export function ScheduleView() {
 
       {/* Modals */}
       {showDirectionModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-end">
+        <div className="absolute inset-0 bg-black bg-opacity-50 z-50 flex items-end">
           <div className="w-full bg-white rounded-t-3xl shadow-lg">
             <div className="max-h-[60vh] overflow-y-auto">
               <div className="p-4">
@@ -234,7 +229,7 @@ export function ScheduleView() {
       )}
 
       {showWeekdayModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-end">
+        <div className="absolute inset-0 bg-black bg-opacity-50 z-50 flex items-end">
           <div className="w-full bg-white rounded-t-3xl shadow-lg">
             <div className="max-h-[60vh] overflow-y-auto">
               <div className="p-4">
