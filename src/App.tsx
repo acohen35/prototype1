@@ -10,12 +10,16 @@ import { ScheduleView } from "./components/ScheduleView";
 import { UpcomingView } from "./components/UpcomingView";
 import { MapView } from "./components/MapView";
 import { DarkModeProvider } from "./contexts/DarkModeContext";
+import { LanguageProvider } from "./contexts/LanguageContext";
+import { UnitPreferenceProvider } from "./contexts/UnitPreferenceContext";
 
 export function App() {
     const [savedRoutes, setSavedRoutes] = useState<string[]>([]);
     return (
-        <DarkModeProvider>
-            <Router>
+        <LanguageProvider>
+            <UnitPreferenceProvider>
+                <DarkModeProvider>
+                    <Router>
                 <Routes>
                     <Route path="/" element={<SplashScreen />} />
                     <Route element={<MainLayout savedRoutes={savedRoutes} setSavedRoutes={setSavedRoutes} />}>
@@ -36,7 +40,9 @@ export function App() {
                         <Route path="/map" element={<MapView />} />
                     </Route>
                 </Routes>
-            </Router>
-        </DarkModeProvider>
+                    </Router>
+                </DarkModeProvider>
+            </UnitPreferenceProvider>
+        </LanguageProvider>
     );
 }

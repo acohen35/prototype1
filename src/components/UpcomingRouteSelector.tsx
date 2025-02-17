@@ -116,7 +116,7 @@ export function UpcomingRouteSelector() {
           <button className="flex-1 py-4 text-gray-600">History</button>
         </div>
       </div>
-      <div className="flex-1 overflow-y-auto bg-gray-50">
+      <div className="flex-1 bg-gray-50 overflow-y-auto pb-24">
         {ROUTES.map(route => (
           <button
             key={route.id}

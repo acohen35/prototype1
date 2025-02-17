@@ -126,14 +126,15 @@ export function UpcomingStationSelector() {
   };
 
   return (
-    <div className="flex flex-col h-full bg-white">
-      <div className="bg-[#0B4EA2] text-white p-4 flex items-center gap-4">
+    <div className="flex flex-col h-full">
+      <div className="flex-shrink-0 bg-[#0B4EA2] text-white p-4 flex items-center gap-4">
         <button onClick={() => navigate("/upcoming", { state: location.state })}>
           <ArrowLeft size={24} />
         </button>
         <h1 className="text-xl">Select a station</h1>
       </div>
-      <div className="border-b">
+
+      <div className="flex-shrink-0 border-b">
         <div className="flex">
           <button className="flex-1 py-4 text-[#0B4EA2] border-b-2 border-[#0B4EA2]">
             All Stations
@@ -141,24 +142,30 @@ export function UpcomingStationSelector() {
           <button className="flex-1 py-4 text-gray-600">History</button>
         </div>
       </div>
-      <div className="flex-1 overflow-y-auto bg-gray-50">
-        {stations.map(station => (
-          <button
-            key={station.id}
-            className="w-full flex items-center gap-4 p-4 border-b bg-white hover:bg-gray-50"
-            onClick={() => handleStationSelect(station.name)}
-          >
-            <div className="w-8 h-8 bg-[#0B4EA2] text-white rounded-lg flex items-center justify-center font-bold">
-              {station.id}
-            </div>
-            <span className="text-gray-900">{station.name}</span>
-          </button>
-        ))}
+
+      <div className="flex-1 min-h-0">
+        <div className="h-full overflow-y-auto bg-gray-50">
+          {stations.map(station => (
+            <button
+              key={station.id}
+              className="w-full flex items-center gap-4 p-4 border-b bg-white hover:bg-gray-50"
+              onClick={() => handleStationSelect(station.name)}
+            >
+              <div className="w-8 h-8 bg-[#0B4EA2] text-white rounded-lg flex items-center justify-center font-bold">
+                {station.id}
+              </div>
+              <span className="text-gray-900">{station.name}</span>
+            </button>
+          ))}
+        </div>
       </div>
-      <div className="fixed bottom-4 right-4">
-        <button className="w-14 h-14 rounded-full bg-[#0B4EA2] text-white flex items-center justify-center shadow-lg">
-          <Search size={24} />
-        </button>
+
+      <div className="flex-shrink-0 px-4 pb-8 pt-4 bg-white border-t border-gray-200">
+        <div className="flex justify-end">
+          <button className="w-14 h-14 rounded-full bg-[#0B4EA2] text-white flex items-center justify-center shadow-lg">
+            <Search size={24} />
+          </button>
+        </div>
       </div>
     </div>
   );

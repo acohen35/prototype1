@@ -81,7 +81,7 @@ export function UpcomingView({
   if (!routeInfo.fromStation || !routeInfo.toStation) {
     return (
       <div className="flex flex-col h-full bg-white">
-        <div className="flex-1 overflow-y-auto">
+        <div className="flex-1 overflow-y-auto pb-32">
           <div className="flex flex-col items-center justify-center p-4">
             <div className="text-gray-400 mb-6">
               <img src="/prototype1/logos/CatslogoBW-1024x282.webp" alt="CATS Logo" className="w-48 h-auto mx-auto" />
@@ -135,9 +135,9 @@ export function UpcomingView({
 
   // Show upcoming times view
   return (
-    <div className="flex flex-col h-full bg-gray-50">
-      <div className="flex-1 overflow-y-auto">
-        <div className="p-4 pb-32 space-y-4">
+    <div className="flex flex-col h-full bg-white">
+      <div className="flex-1 overflow-y-auto pb-32">
+        <div className="p-4 space-y-4">
           {selectedRoutes.length > 0 && (
             <button
               onClick={handleSaveSelected}
@@ -184,7 +184,7 @@ export function UpcomingView({
           ))}
         </div>
       </div>
-      <div className="fixed bottom-0 left-0 right-0 p-4 space-y-4 bg-gray-50 border-t border-gray-200">
+      <div className="fixed bottom-0 left-0 right-0 p-4 space-y-4 bg-white border-t border-gray-200">
         <button
           onClick={() => navigate("/upcoming/route")}
           className="w-full p-4 bg-white border border-[#0B4EA2] text-[#0B4EA2] rounded-lg font-bold"
